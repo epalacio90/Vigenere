@@ -1,48 +1,42 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: epalacio
+ * Date: 10/15/19
+ * Time: 9:39 PM
+ */
 
-    $abc = 'abcdefghijklmnopqrstuvwxyz ';
-    $i =0 ;
-    while ($i < strlen($abc)){
-        $char = substr($abc, $i, 1);
-        //echo 'El caracter: ' . $char . ' Tiene un valor de ' . toNumber($char) . " <br>";
-        $i++;
-
-    }
-
-    $m= 'Isaac';
-    $k = 'pla';
-    $i=0;
-    $c;
-    while($i < strlen($m)){
-        $res = toNumber(substr($m, $i, 1)) + toNumber(substr($k, $i % strlen($k), 1));
-        if($res >= strlen($abc)){
-           $res =  $res % strlen($abc);
-        }
-        $c = $c . substr($abc, $res, 1);
-        $i++;
-    }
-
-    echo($c);
+include('./template.php');
 
 
+$t = new Template();
 
-    function toNumber($dest)
-    {
-        if($dest == ' '){
-            27;
-        }
-        if ($dest)
-
-            return ord(strtolower($dest)) - 96;
-        else
-            return 0;
-    }
-
-
-
-
-
-
+$t->header();
 
 ?>
+<br><br>
+<h1>Vigenere</h1>
+<br><br>
+<div class="card col-lg-6 py-3">
+    <form action="vigenere.php" method="post">
+        <div class="form-group">
+            <label for="message">Mensaje</label>
+            <input type="text" class="form-control" name="message" id="message" aria-describedby="messageHelp" placeholder="Mensaje">
+            <small id="messageHelp" class="form-text text-muted">Este mensaje se cifrará por medio del método vigenere</small>
+        </div>
+        <div class="form-group">
+            <label for="key">Llave</label>
+            <input type="text" class="form-control" name="key" id="key" aria-describedby="keyHelp" placeholder="Llave">
+            <small id="keyHelp" class="form-text text-muted">Este Llave se cifrará por medio del método vigenere</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cifrar</button>
+    </form>
+</div>
+
+<?php
+$t->footer();
+
+?>
+
 
